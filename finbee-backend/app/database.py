@@ -17,11 +17,11 @@ loans_collection = db["loans"]
 insurance_collection = db["insurance"]
 investments_collection = db["investments"]
 
-
 async def ping_database() -> bool:
     """Used by the health-check endpoint to confirm Atlas connectivity."""
     try:
         await client.admin.command("ping")
         return True
-    except Exception:
+    except Exception as e:
+        print(f"MongoDB connection error: {e}")
         return False

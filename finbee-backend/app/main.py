@@ -9,6 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.database import ping_database
+from app.routes import auth
 
 app = FastAPI(title=settings.APP_NAME, debug=settings.DEBUG)
 
@@ -38,6 +39,6 @@ async def health_check():
 # --- Routers get registered here as each phase is built ---
 # from app.routes import auth, users, financial_profile, goals, loans, insurance, investments
 # from app.routes import intelligence, planning, decisions, ai, reports, search
-# app.include_router(auth.router, prefix="/auth", tags=["auth"])
+app.include_router(auth.router, prefix="/auth", tags=["auth"])
 # app.include_router(users.router, prefix="/users", tags=["users"])
 # ... etc, added incrementally per phase

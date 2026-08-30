@@ -11,6 +11,7 @@ from app.config import settings
 from app.database import ping_database
 from app.routes import auth
 from app.routes import financial_profile
+from app.routes import goals
 
 
 app = FastAPI(title=settings.APP_NAME, debug=settings.DEBUG)
@@ -43,5 +44,6 @@ async def health_check():
 # from app.routes import intelligence, planning, decisions, ai, reports, search
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
 app.include_router(financial_profile.router, prefix="/financial-profile", tags=["financial-profile"])
+app.include_router(goals.router, prefix="/goals", tags=["goals"])
 # app.include_router(users.router, prefix="/users", tags=["users"])
 # ... etc, added incrementally per phase

@@ -18,6 +18,7 @@ from app.routes import investment
 from app.routes import intelligence
 from app.routes import planning
 from app.routes import decisions
+from app.routes import reports
 
 
 app = FastAPI(title=settings.APP_NAME, debug=settings.DEBUG)
@@ -57,5 +58,6 @@ app.include_router(investment.router, prefix="/investments", tags=["investments"
 app.include_router(intelligence.router, prefix="/intelligence", tags=["intelligence"])
 app.include_router(planning.router, prefix="/planning", tags=["planning"])
 app.include_router(decisions.router, prefix="/decisions", tags=["decisions"])
+app.include_router(reports.router, prefix="/reports", tags=["reports"])
 # app.include_router(users.router, prefix="/users", tags=["users"])
 # ... etc, added incrementally per phase
